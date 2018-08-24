@@ -1,0 +1,35 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/** @module src/config/keys */
+
+/** Define database credentials. */
+var DBNAME = 'resumer_db';
+var DBUSER = 'ebcp_dev';
+var DBPASS = 'resumeradmin';
+var DBHOST = 'resumer-db.ci0c5bgcnsn0.us-east-2.rds.amazonaws.com';
+
+var config = exports.config = {
+  env: 'production',
+  secretOrKey: 'secret',
+  db: DBNAME,
+  dbuser: DBUSER,
+  dbpass: DBPASS,
+  dbconfig: {
+    host: DBHOST,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true
+    },
+    pool: {
+      max: 10,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    },
+    logging: false
+  }
+};
+//# sourceMappingURL=production.js.map

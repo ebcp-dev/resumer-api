@@ -1,0 +1,20 @@
+language: node_js
+sudo: required
+dist: xenial
+node_js:
+  - 'stable'
+install:
+  - npm install
+  - npm install -g codecov
+services:
+  - postgresql
+env:
+  global:
+    - PGPORT=5432
+before_script:
+  - createdb -p 5432 -h 127.0.0.1 travis_ci_test
+  - createdb -p 5432 -h 127.0.0.1 resumer-test
+script:
+  - export NODE_ENV=test && npm run build && istanbul cover ./node_modules/mocha/bin/_mocha -- --require babel-core/register -R spec
+  - ./node_modules/.bin/codecov
+  - npm run test-cover

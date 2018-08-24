@@ -1,0 +1,43 @@
+{
+  "name": "resumer-api",
+  "version": "1.0.0",
+  "description": "An api written in Node.js",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src/server\"",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && npm run build-babel",
+    "test": "export NODE_ENV=test && mocha --require babel-core/register",
+    "test-cover": "export NODE_ENV=test npm run build && nyc --reporter=text mocha --require babel-core/register",
+    "build-babel": "babel -d ./build ./src -s",
+    "start": "npm run build && nodemon ./build/server.js",
+    "production-start": "export NODE_ENV=production npm run build && node ./build/server.js"
+  },
+  "author": "Earl Perez",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.38.0",
+    "validator": "^10.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "chai": "^4.1.2",
+    "codecov": "^3.0.2",
+    "coffeescript": "^2.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "nyc": "^12.0.2",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0"
+  }
+}
