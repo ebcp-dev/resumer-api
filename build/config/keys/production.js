@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 /** @module src/config/keys */
 
 /** Define database credentials. */
-var DBNAME = 'resumer_db';
-var DBUSER = 'ebcp_dev';
-var DBPASS = 'resumeradmin';
-var DBHOST = 'resumer-db.ci0c5bgcnsn0.us-east-2.rds.amazonaws.com';
+var DBNAME = process.env.DBNAME;
+var DBUSER = process.env.DBUSER;
+var DBPASS = process.env.DBPASS;
+var DBHOST = process.env.DBHOST;
 
 var config = exports.config = {
   env: 'production',

@@ -46,6 +46,7 @@ Profile.belongsTo(User, { foreignKey: 'userId' });
 Job.belongsTo(User, { foreignKey: 'userId' });
 
 sequelize.sync().then(function () {
+  console.log('Connected to ' + db + ' as ' + dbuser + '.');
   console.log('Database & tables created!');
   /** Emit event once database has been created. */
   _server2.default.emit('Database ready.');
