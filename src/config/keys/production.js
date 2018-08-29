@@ -1,10 +1,10 @@
 /** @module src/config/keys */
 
 /** Define database credentials. */
-const DBNAME = 'resumer_db';
-const DBUSER = 'ebcp_dev';
-const DBPASS = 'resumeradmin';
-const DBHOST = 'resumer-db.ci0c5bgcnsn0.us-east-2.rds.amazonaws.com';
+const DBNAME = process.env.DBNAME;
+const DBUSER = process.env.DBUSER;
+const DBPASS = process.env.DBPASS;
+const DBHOST = process.env.DBHOST;
 
 export const config = {
   env: 'production',
