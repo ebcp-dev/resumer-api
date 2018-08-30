@@ -1,6 +1,7 @@
 # Resumer-API
 
 An API written in Node with a PostgreSQL database and JWT authentication.
+Visit the UI repo for this API: [resumer-ui](https://github.com/ebcp-dev/resumer-ui)
 
 [![Build Status](https://travis-ci.org/ebcp-dev/resumer-api.svg?branch=master)](https://travis-ci.org/ebcp-dev/resumer-api)
 
