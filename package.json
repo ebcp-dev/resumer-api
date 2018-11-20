@@ -11,6 +11,7 @@
     "test-cover": "export NODE_ENV=test npm run build && nyc --reporter=text mocha --require babel-core/register",
     "build-babel": "babel -d ./build ./src -s",
     "start": "npm run build && nodemon ./build/server.js",
+    "postinstall": "npm run build",
     "production-start": "export NODE_ENV=production npm run build && node ./build/server.js"
   },
   "author": "Earl Perez",
