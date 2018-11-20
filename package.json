@@ -17,6 +17,7 @@
   "author": "Earl Perez",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
