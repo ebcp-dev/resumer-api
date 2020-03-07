@@ -84,6 +84,41 @@ describe('Profile routes:', done => {
           done();
         });
     });
+    it('Status 400 on invalid Stack Overflow URL', done => {
+      request(app)
+        .post('/api/profile')
+        .set('Authorization', token)
+        .send(profileInput.invalidProfileStackOverFlow)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.body.stackoverflow).equals(
+            'Stack Overflow URL is invalid.'
+          );
+          done();
+        });
+    });
+    it('Status 400 on invalid Dribbble URL', done => {
+      request(app)
+        .post('/api/profile')
+        .set('Authorization', token)
+        .send(profileInput.invalidProfileDribbble)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.body.dribbble).equals('Dribbble URL is invalid.');
+          done();
+        });
+    });
+    it('Status 400 on invalid Twitter URL', done => {
+      request(app)
+        .post('/api/profile')
+        .set('Authorization', token)
+        .send(profileInput.invalidProfileTwitter)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.body.twitter).equals('Twitter URL is invalid.');
+          done();
+        });
+    });
     it('Status 200 on creating first profile', done => {
       request(app)
         .post('/api/profile')

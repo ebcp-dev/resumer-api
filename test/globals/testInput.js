@@ -81,6 +81,21 @@ export const profileInput = {
     status: 'Actively Looking',
     github: 'https://test'
   },
+  invalidProfileStackOverFlow: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    stackoverflow: 'https://test'
+  },
+  invalidProfileDribbble: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    dribbble: 'https://test'
+  },
+  invalidProfileTwitter: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    twitter: 'https://test'
+  },
   testUpdateProfile1: {
     username: 'thetester2',
     status: 'Actively Looking',

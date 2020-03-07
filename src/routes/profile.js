@@ -22,7 +22,10 @@ router.post(
       status: req.body.status,
       website: req.body.website || '',
       linkedin: req.body.linkedin || '',
-      github: req.body.github || ''
+      github: req.body.github || '',
+      stackoverflow: req.body.stackoverflow || '',
+      dribbble: req.body.dribbble || '',
+      twitter: req.body.twitter || ''
     };
     const { errors, isValid } = validateProfileInput(req.body);
     if (!isValid) {
@@ -65,7 +68,10 @@ router.put(
       status: req.body.status,
       website: req.body.website || '',
       linkedin: req.body.linkedin || '',
-      github: req.body.github || ''
+      github: req.body.github || '',
+      stackoverflow: req.body.stackoverflow || '',
+      dribbble: req.body.dribbble || '',
+      twitter: req.body.twitter || ''
     };
 
     const { errors, isValid } = validateProfileInput(profileUpdate);
