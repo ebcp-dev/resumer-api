@@ -41,18 +41,45 @@ var validateProfileInput = function validateProfileInput(data) {
   }
 
   /** Set website value to invalid if invalid url. */
-  if (data.website && !_validator2.default.isURL(data.website, { require_protocol: true })) {
+  if (data.website && !_validator2.default.isURL(data.website, {
+    require_protocol: true
+  })) {
     errors.website = 'Website URL is invalid.';
   }
 
   /** Set linkedin value to invalid if invalid url. */
-  if (data.linkedin && !_validator2.default.isURL(data.linkedin, { require_protocol: true })) {
+  if (data.linkedin && !_validator2.default.isURL(data.linkedin, {
+    require_protocol: true
+  })) {
     errors.linkedin = 'LinkedIn URL is invalid.';
   }
 
   /** Set github value to invalid if invalid url. */
-  if (data.github && !_validator2.default.isURL(data.github, { require_protocol: true })) {
+  if (data.github && !_validator2.default.isURL(data.github, {
+    require_protocol: true
+  })) {
     errors.github = 'GitHub URL is invalid.';
+  }
+
+  /** Set stackoverflow value to invalid if invalid url. */
+  if (data.stackoverflow && !_validator2.default.isURL(data.stackoverflow, {
+    require_protocol: true
+  })) {
+    errors.stackoverflow = 'Stack Overflow URL is invalid.';
+  }
+
+  /** Set dribbble value to invalid if invalid url. */
+  if (data.dribbble && !_validator2.default.isURL(data.dribbble, {
+    require_protocol: true
+  })) {
+    errors.dribbble = 'Dribbble URL is invalid.';
+  }
+
+  /** Set twitter value to invalid if invalid url. */
+  if (data.twitter && !_validator2.default.isURL(data.twitter, {
+    require_protocol: true
+  })) {
+    errors.twitter = 'Twitter URL is invalid.';
   }
 
   /** Return errors object and isValid boolean value. */

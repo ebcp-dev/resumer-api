@@ -41,7 +41,10 @@ router.post('/', _passport2.default.authenticate('jwt', { session: false }), fun
     status: req.body.status,
     website: req.body.website || '',
     linkedin: req.body.linkedin || '',
-    github: req.body.github || ''
+    github: req.body.github || '',
+    stackoverflow: req.body.stackoverflow || '',
+    dribbble: req.body.dribbble || '',
+    twitter: req.body.twitter || ''
   };
 
   var _validateProfileInput = (0, _profile2.default)(req.body),
@@ -84,7 +87,10 @@ router.put('/', _passport2.default.authenticate('jwt', { session: false }), func
     status: req.body.status,
     website: req.body.website || '',
     linkedin: req.body.linkedin || '',
-    github: req.body.github || ''
+    github: req.body.github || '',
+    stackoverflow: req.body.stackoverflow || '',
+    dribbble: req.body.dribbble || '',
+    twitter: req.body.twitter || ''
   };
 
   var _validateProfileInput2 = (0, _profile2.default)(profileUpdate),

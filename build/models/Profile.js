@@ -35,6 +35,15 @@ var ProfileModel = exports.ProfileModel = function ProfileModel(sequelize, type)
     },
     github: {
       type: type.STRING
+    },
+    stackoverflow: {
+      type: type.STRING
+    },
+    dribbble: {
+      type: type.STRING
+    },
+    twitter: {
+      type: type.STRING
     }
   });
 };
