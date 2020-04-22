@@ -20,10 +20,10 @@ opts.secretOrKey = config.secretOrKey;
  * Returns the payload once authenticated.
  * @param {passport} passport
  */
-const useJwt = passport => {
+const useJwt = (passport) => {
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
-      User.findOne({ where: { email: jwt_payload.email } }).then(user => {
+      User.findOne({ where: { email: jwt_payload.email } }).then((user) => {
         if (user) {
           return done(null, user);
         }

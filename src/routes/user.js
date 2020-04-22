@@ -60,13 +60,13 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   /** Find user by email firsts. */
-  User.findOne({ where: { email } }).then(user => {
+  User.findOne({ where: { email } }).then((user) => {
     if (!user) {
       errors.email = 'User not found.';
       return res.status(400).json(errors);
     }
     /** Compare input password with hashed password. */
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         /** JWT payload */
         const payload = {

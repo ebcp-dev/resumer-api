@@ -35,7 +35,7 @@ export const userInput = {
     password: ''
   },
   invalidSignupEmail: {
-    email: 'test@gmail.com',
+    email: '@gmail.com',
     password: 'password',
     password2: 'password'
   },

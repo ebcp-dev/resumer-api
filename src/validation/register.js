@@ -10,7 +10,7 @@ import isEmpty from './utility/is-empty';
  * Checks if arguments are empty or invalid and returns an error object
  * and a boolean value whether the error object is empty or not.
  */
-const validateRegisterInput = data => {
+const validateRegisterInput = (data) => {
   /** Define errors object. */
   let errors = {};
 
@@ -21,8 +21,7 @@ const validateRegisterInput = data => {
 
   /** Set email to invalid error message if invalid email. */
   if (!Validator.isEmail(data.email)) {
-    errors.email =
-      'Email is invalid. (Make sure email id is at least 6 characters long.)';
+    errors.email = 'Email is invalid.';
   }
 
   /** Set email value to required error message if empty. */

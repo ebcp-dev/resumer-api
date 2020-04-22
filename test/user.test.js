@@ -5,9 +5,9 @@ import app from '../src/server';
 import { userInput } from './globals/testInput';
 import './globals/global-hooks';
 
-describe('User routes:', done => {
+describe('User routes:', (done) => {
   describe('POST /user/signup - register user account', () => {
-    it('Status 200 on successful signup', done => {
+    it('Status 200 on successful signup', (done) => {
       request(app)
         .post('/api/user/signup')
         .send(userInput.testSignup2)
@@ -17,7 +17,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on existing signup email', done => {
+    it('Status 400 on existing signup email', (done) => {
       request(app)
         .post('/api/user/signup')
         .send(userInput.testSignup1)
@@ -27,7 +27,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on empty signup input', done => {
+    it('Status 400 on empty signup input', (done) => {
       request(app)
         .post('/api/user/signup')
         .send(userInput.emptySignupInput)
@@ -39,7 +39,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on confirm password signup failure', done => {
+    it('Status 400 on confirm password signup failure', (done) => {
       request(app)
         .post('/api/user/signup')
         .send(userInput.unconfirmedSignupPassword)
@@ -49,21 +49,19 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid email', done => {
+    it('Status 400 on invalid email', (done) => {
       request(app)
         .post('/api/user/signup')
         .send(userInput.invalidSignupEmail)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals(
-            'Email is invalid. (Make sure email id is at least 6 characters long.)'
-          );
+          expect(res.body.email).equals('Email is invalid.');
           done();
         });
     });
   });
   describe('POST /user/login - login to registered account', () => {
-    it('Status 200 on successful login', done => {
+    it('Status 200 on successful login', (done) => {
       request(app)
         .post('/api/user/login')
         .send(userInput.testLogin1)
@@ -73,7 +71,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on wrong login email', done => {
+    it('Status 400 on wrong login email', (done) => {
       request(app)
         .post('/api/user/login')
         .send(userInput.wrongLoginEmail)
@@ -83,7 +81,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on wrong login password', done => {
+    it('Status 400 on wrong login password', (done) => {
       request(app)
         .post('/api/user/login')
         .send(userInput.wrongLoginPassword)
@@ -93,7 +91,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 400 on empty login input', done => {
+    it('Status 400 on empty login input', (done) => {
       request(app)
         .post('/api/user/login')
         .send(userInput.emptyLoginInput)
@@ -107,7 +105,7 @@ describe('User routes:', done => {
   });
   describe("GET /user/current - get authenticated user's details", () => {
     let token;
-    before(done => {
+    before((done) => {
       request(app)
         .post('/api/user/login')
         .send(userInput.testLogin1)
@@ -116,7 +114,7 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 200 on authorized access for /current', done => {
+    it('Status 200 on authorized access for /current', (done) => {
       request(app)
         .get('/api/user/current')
         .set('Authorization', token)
@@ -126,10 +124,8 @@ describe('User routes:', done => {
           done();
         });
     });
-    it('Status 401 on unauthorized access for /current', done => {
-      request(app)
-        .get('/api/user/current')
-        .expect(401, done);
+    it('Status 401 on unauthorized access for /current', (done) => {
+      request(app).get('/api/user/current').expect(401, done);
     });
   });
 });

@@ -6,13 +6,13 @@ import { User, Profile } from '../src/sequelize';
 import { userInput, profileInput } from './globals/testInput';
 import './globals/global-hooks';
 
-describe('Profile routes:', done => {
+describe('Profile routes:', (done) => {
   let token, token2;
-  before(done => {
+  before((done) => {
     request(app)
       .post('/api/user/login')
       .send(userInput.testLogin1)
-      .then(res => {
+      .then((res) => {
         token = res.body.session;
         request(app)
           .post('/api/user/signup')
@@ -29,7 +29,7 @@ describe('Profile routes:', done => {
       });
   });
   describe('GET /profile/all - no profiles created yet', () => {
-    it('Status 200 with empty array', done => {
+    it('Status 200 with empty array', (done) => {
       request(app)
         .get('/api/profile/all')
         .expect(200)
@@ -40,7 +40,7 @@ describe('Profile routes:', done => {
     });
   });
   describe('POST /profile - create user profile', () => {
-    it('Status 400 on empty create profile input', done => {
+    it('Status 400 on empty create profile input', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -51,7 +51,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid website URL', done => {
+    it('Status 400 on invalid website URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -62,7 +62,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid LinkedIn URL', done => {
+    it('Status 400 on invalid LinkedIn URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -73,7 +73,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid GitHub URL', done => {
+    it('Status 400 on invalid GitHub URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -84,7 +84,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid Stack Overflow URL', done => {
+    it('Status 400 on invalid Stack Overflow URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -97,7 +97,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid Dribbble URL', done => {
+    it('Status 400 on invalid Dribbble URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -108,7 +108,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on invalid Twitter URL', done => {
+    it('Status 400 on invalid Twitter URL', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -119,7 +119,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 200 on creating first profile', done => {
+    it('Status 200 on creating first profile', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -132,7 +132,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 if user already has a profile', done => {
+    it('Status 400 if user already has a profile', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token)
@@ -143,7 +143,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on already existing username', done => {
+    it('Status 400 on already existing username', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token2)
@@ -154,7 +154,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 200 on creating second profile', done => {
+    it('Status 200 on creating second profile', (done) => {
       request(app)
         .post('/api/profile')
         .set('Authorization', token2)
@@ -167,7 +167,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 401 on unauthorized request', done => {
+    it('Status 401 on unauthorized request', (done) => {
       request(app)
         .post('/api/profile')
         .send(profileInput.testCreateProfile1)
@@ -175,7 +175,7 @@ describe('Profile routes:', done => {
     });
   });
   describe("GET /profile - get current authenticated user's profile", () => {
-    it('Status 200 on authenticated request', done => {
+    it('Status 200 on authenticated request', (done) => {
       request(app)
         .get('/api/profile')
         .set('Authorization', token)
@@ -187,14 +187,12 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 401 on unauthorized request', done => {
-      request(app)
-        .get('/api/profile')
-        .expect(401, done);
+    it('Status 401 on unauthorized request', (done) => {
+      request(app).get('/api/profile').expect(401, done);
     });
   });
   describe("GET /profile/:username - get specific user's profile by username", () => {
-    it('Status 200 on authenticated request', done => {
+    it('Status 200 on authenticated request', (done) => {
       request(app)
         .get(`/api/profile/${profileInput.testCreateProfile1.username}`)
         .set('Authorization', token)
@@ -206,7 +204,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 if no profiles found for username', done => {
+    it('Status 400 if no profiles found for username', (done) => {
       request(app)
         .get('/api/profile/wrongUsername')
         .set('Authorization', token)
@@ -216,14 +214,12 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 401 on unauthorized request', done => {
-      request(app)
-        .get('/api/profile')
-        .expect(401, done);
+    it('Status 401 on unauthorized request', (done) => {
+      request(app).get('/api/profile').expect(401, done);
     });
   });
   describe("PUT /profile - update authenticated user's profile", () => {
-    it('Status 200 on updated profile username', done => {
+    it('Status 200 on updated profile username', (done) => {
       request(app)
         .put('/api/profile')
         .set('Authorization', token)
@@ -236,7 +232,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on empty update input', done => {
+    it('Status 400 on empty update input', (done) => {
       request(app)
         .put('/api/profile')
         .set('Authorization', token2)
@@ -246,7 +242,7 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 400 on non-unique update username', done => {
+    it('Status 400 on non-unique update username', (done) => {
       request(app)
         .put('/api/profile')
         .set('Authorization', token2)
@@ -256,14 +252,12 @@ describe('Profile routes:', done => {
           done();
         });
     });
-    it('Status 401 on unauthorized request', done => {
-      request(app)
-        .put('/api/profile')
-        .expect(401, done);
+    it('Status 401 on unauthorized request', (done) => {
+      request(app).put('/api/profile').expect(401, done);
     });
   });
   describe('GET /profile/all - 2 profiles added', () => {
-    it('Status 200 with array of 2 profiles', done => {
+    it('Status 200 with array of 2 profiles', (done) => {
       request(app)
         .get('/api/profile/all')
         .expect(200)
@@ -273,15 +267,15 @@ describe('Profile routes:', done => {
         });
     });
   });
-  after(done => {
+  after((done) => {
     Profile.destroy({
       where: { username: profileInput.testCreateProfile2.username },
       truncate: true
-    }).then(destroyed => {
+    }).then((destroyed) => {
       User.destroy({
         where: { email: userInput.testSignup2.email },
         force: true
-      }).then(destroyed => {
+      }).then((destroyed) => {
         done();
       });
     });

@@ -34,7 +34,7 @@ router.post(
     /** Check if user has a profile already. */
     Profile.findOne({
       where: { userId: userProfile.userId }
-    }).then(profile => {
+    }).then((profile) => {
       if (profile) {
         errors.profile = 'You already have a profile.';
         return res.status(400).json(errors);
@@ -82,7 +82,7 @@ router.put(
     /** Check if username is unique first. */
     Profile.findOne({
       where: { username: profileUpdate.username }
-    }).then(profile => {
+    }).then((profile) => {
       /** 400 error if already exists. */
       if (profile && profile.userId !== profileUpdate.userId) {
         errors.username = 'Username already exists.';
@@ -96,7 +96,7 @@ router.put(
           .then(([rowsUpdated, [updatedProfile]]) => {
             return res.status(200).json(updatedProfile);
           })
-          .catch(err => {
+          .catch((err) => {
             return res.status(400).json(err);
           });
       }
@@ -106,7 +106,7 @@ router.put(
 
 /** Get list of profiles. */
 router.get('/all', (req, res) => {
-  Profile.findAll().then(profiles => {
+  Profile.findAll().then((profiles) => {
     return res.status(200).json(profiles);
   });
 });
@@ -118,8 +118,8 @@ router.get(
     session: false
   }),
   (req, res) => {
-    Profile.findOne({ where: { userId: req.user.id } }).then(profile => {
-      User.findOne({ where: { id: req.user.id } }).then(user => {
+    Profile.findOne({ where: { userId: req.user.id } }).then((profile) => {
+      User.findOne({ where: { id: req.user.id } }).then((user) => {
         return res.status(200).json(profile);
       });
     });
@@ -129,9 +129,9 @@ router.get(
 /** Get profile of specific user. */
 router.get('/:username', (req, res) => {
   Profile.findOne({ where: { username: req.params.username } }).then(
-    profile => {
+    (profile) => {
       if (profile) {
-        User.findOne({ where: { id: profile.userId } }).then(user => {
+        User.findOne({ where: { id: profile.userId } }).then((user) => {
           if (user) {
             return res.status(200).json({ email: user.email, profile });
           }

@@ -10,7 +10,7 @@ import isEmpty from './utility/is-empty';
  * Checks if arguments are empty or invalid and returns an error object
  * and a boolean value whether the error object is empty or not.
  */
-const validateLoginInput = data => {
+const validateLoginInput = (data) => {
   /** Define errors object. */
   let errors = {};
 

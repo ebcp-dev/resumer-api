@@ -44,7 +44,7 @@ router.post(
           return res.status(200).json(job);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         return res.status(400).json(err);
       });
   }
@@ -74,7 +74,7 @@ router.put(
     /** Check if link is already in user's list. */
     Job.findOne({
       where: { userId: req.user.id, link: updateJob.link }
-    }).then(job => {
+    }).then((job) => {
       if (job && job.id !== updateJob.id) {
         /** 400 error if link is not unique. */
         errors.link = 'Job already added.';
@@ -88,7 +88,7 @@ router.put(
           .then(([rowsUpdate, [updatedJob]]) => {
             return res.status(200).json(updatedJob);
           })
-          .catch(err => {
+          .catch((err) => {
             return res.status(400).json(err);
           });
       }
@@ -105,7 +105,7 @@ router.delete(
   (req, res) => {
     let linksToDelete = req.body.links || [];
     Job.destroy({ where: { userId: req.user.id, link: linksToDelete } }).then(
-      deleted => {
+      (deleted) => {
         if (deleted) {
           return res.status(200).json({ deleted: true });
         } else {
@@ -125,7 +125,7 @@ router.get(
   (req, res) => {
     Job.findAll({
       where: { userId: req.user.id }
-    }).then(jobs => {
+    }).then((jobs) => {
       return res.status(200).json(jobs);
     });
   }
