@@ -6,6 +6,7 @@ import { User, Profile } from '../src/sequelize';
 import { userInput, profileInput } from './globals/testInput';
 import './globals/global-hooks';
 
+// Create and login test users
 describe('Profile routes:', (done) => {
   let token, token2;
   before((done) => {

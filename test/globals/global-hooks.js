@@ -3,6 +3,7 @@ import app from '../../src/server';
 import { User, Profile, Job } from '../../src/sequelize';
 import { userInput } from './testInput';
 
+// Create test database before testing
 before((done) => {
   app.on('Database ready.', () => {
     Job.destroy({ where: {}, force: true });
@@ -17,6 +18,7 @@ before((done) => {
   });
 });
 
+// Destroy test data after testing
 after((done) => {
   Job.destroy({ where: {}, force: true }).then((destroyed) => {
     Profile.destroy({ where: {}, force: true }).then((destroyed) => {

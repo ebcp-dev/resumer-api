@@ -6,6 +6,7 @@ import { User, Job } from '../src/sequelize';
 import { userInput, jobInput } from './globals/testInput';
 import './globals/global-hooks';
 
+// Create and login test users
 describe('Job routes:', (done) => {
   let token, token2, job1Id;
   before((done) => {
