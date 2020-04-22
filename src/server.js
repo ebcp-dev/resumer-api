@@ -21,7 +21,8 @@ useJwt(passport);
 
 /** Define API routes. */
 app.use('/api/user', require('./routes/user').default);
-app.use('/api/data', require('./routes/data').default);
+app.use('/api/profile', require('./routes/profile').default);
+app.use('/api/job', require('./routes/job').default);
 
 /** Server listen to port on 'Database ready' event. */
 app.on('Database ready.', () => {

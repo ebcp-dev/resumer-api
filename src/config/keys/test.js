@@ -3,7 +3,7 @@
 export const config = {
   env: 'test',
   secretOrKey: 'secret',
-  db: 'api-test',
+  db: 'resumer-test',
   dbuser: 'postgres',
   dbpass: 'admin',
   dbconfig: {

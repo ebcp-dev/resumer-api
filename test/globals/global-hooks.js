@@ -1,11 +1,12 @@
 import request from 'supertest';
 import app from '../../src/server';
-import { User, Data } from '../../src/sequelize';
+import { User, Profile, Job } from '../../src/sequelize';
 import { userInput } from './testInput';
 
-before((done) => {
+before(done => {
   app.on('Database ready.', () => {
-    Data.destroy({ where: {}, force: true });
+    Job.destroy({ where: {}, force: true });
+    Profile.destroy({ where: {}, force: true });
     User.destroy({ where: {}, force: true });
     request(app)
       .post('/api/user/signup')
@@ -16,10 +17,12 @@ before((done) => {
   });
 });
 
-after((done) => {
-  Data.destroy({ where: {}, force: true }).then((destroyed) => {
-    User.destroy({ where: {}, force: true }).then((destroyed) => {
-      process.exit(0);
+after(done => {
+  Job.destroy({ where: {}, force: true }).then(destroyed => {
+    Profile.destroy({ where: {}, force: true }).then(destroyed => {
+      User.destroy({ where: {}, force: true }).then(destroyed => {
+        process.exit(0);
+      });
     });
   });
 });

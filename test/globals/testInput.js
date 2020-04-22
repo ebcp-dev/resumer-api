@@ -50,21 +50,100 @@ export const userInput = {
     password2: ''
   }
 };
-/** Data routes test input */
-export const dataInput = {
-  testAddData1: {
-    uniqueData: 'testing123'
+/** Profile routes test input */
+export const profileInput = {
+  testCreateProfile1: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    website: 'https://test.com',
+    github: 'https://github.com/test-dev/'
   },
-  moreData1: {
-    uniqueData: 'testing456'
+  testCreateProfile2: {
+    username: 'newacct',
+    status: 'Not Looking',
+    website: 'https://test.com',
+    github: 'https://github.com/new-dev/'
   },
-  testDeleteData1: {
-    uniqueDataList: ['testing123']
+  invalidProfileWebsite: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    website: 'https://test',
+    github: 'https://github.com/test-dev/'
   },
-  testDeleteData2: {
-    uniqueDataList: ['testing456']
+  invalidProfileLinkedIn: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    linkedin: 'https://test',
+    github: 'https://github.com/test-dev/'
   },
-  testDeleteData12: {
-    uniqueDataList: ['testing123', 'testing456']
+  invalidProfileGitHub: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    github: 'https://test'
+  },
+  invalidProfileStackOverFlow: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    stackoverflow: 'https://test'
+  },
+  invalidProfileDribbble: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    dribbble: 'https://test'
+  },
+  invalidProfileTwitter: {
+    username: 'thetester',
+    status: 'Actively Looking',
+    twitter: 'https://test'
+  },
+  testUpdateProfile1: {
+    username: 'thetester2',
+    status: 'Actively Looking',
+    website: 'https://test.com',
+    github: 'https://github.com/tester-dev/'
+  }
+};
+/** Job routes test input */
+export const jobInput = {
+  testAddJob1: {
+    role: 'Software Engineer',
+    company: 'Facebook',
+    link: 'https://job1.com',
+    location: 'Mountain View, CA',
+    seniority: 'New Grad',
+    salaryRange: '120-150k'
+  },
+  testAddJob2: {
+    role: 'iOS Engineer',
+    company: 'Apple',
+    link: 'https://job2.com',
+    location: 'Cupertino, CA',
+    seniority: 'Mid',
+    salaryRange: '150-200k'
+  },
+  testAddJob3: {
+    role: 'Machine Learning Engineer',
+    company: 'Stripe',
+    link: 'https://job3.com',
+    location: 'San Francisco, CA',
+    seniority: 'Senior',
+    salaryRange: '200-300k'
+  },
+  invalidJobLink: {
+    role: 'Software Engineer',
+    url: 'Facebook',
+    link: 'https://facebook'
+  },
+  testDeleteJob1: {
+    links: ['https://job1.com']
+  },
+  testDeleteJob2: {
+    links: ['https://job2.com']
+  },
+  testDeleteJob3: {
+    links: ['https://job3.com']
+  },
+  testDeleteJob12: {
+    links: ['https://job1.com', 'https://job2.com']
   }
 };
