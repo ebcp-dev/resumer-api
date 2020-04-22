@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", {
 var config = exports.config = {
   env: 'development',
   secretOrKey: 'secret',
-  db: 'resumer-db',
+  db: 'api-db',
   dbuser: 'postgres',
   dbpass: 'admin',
   dbconfig: {

@@ -33,7 +33,7 @@ var validateRegisterInput = function validateRegisterInput(data) {
 
   /** Set email to invalid error message if invalid email. */
   if (!_validator2.default.isEmail(data.email)) {
-    errors.email = 'Email is invalid. (Make sure email id is at least 6 characters long.)';
+    errors.email = 'Email is invalid.';
   }
 
   /** Set email value to required error message if empty. */

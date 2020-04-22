@@ -3,7 +3,7 @@
 export const config = {
   env: 'development',
   secretOrKey: 'secret',
-  db: 'resumer-db',
+  db: 'api-db',
   dbuser: 'postgres',
   dbpass: 'admin',
   dbconfig: {
