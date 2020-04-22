@@ -21,7 +21,7 @@ after((done) => {
   Job.destroy({ where: {}, force: true }).then((destroyed) => {
     Profile.destroy({ where: {}, force: true }).then((destroyed) => {
       User.destroy({ where: {}, force: true }).then((destroyed) => {
-        done();
+        process.exit(0);
       });
     });
   });
