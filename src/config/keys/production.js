@@ -16,7 +16,8 @@ export const config = {
     host: DBHOST,
     dialect: 'postgres',
     dialectOptions: {
-      ssl: true
+      ssl: true,
+      rejectUnauthorized: false
     },
     pool: {
       max: 10,
