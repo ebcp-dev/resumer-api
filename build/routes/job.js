@@ -48,9 +48,9 @@ router.post('/', _passport2.default.authenticate('jwt', { session: false }), fun
     role: req.body.role,
     company: req.body.company,
     link: req.body.link,
-    location: req.body.location || '',
-    seniority: req.body.seniority || '',
-    salaryRange: req.body.salaryRange || ''
+    location: req.body.location || 'Unspecified',
+    seniority: req.body.seniority || 'Unspecified',
+    salaryRange: req.body.salaryRange || 'Unspecified'
   };
 
   _sequelize.Job.findOrCreate({
@@ -83,9 +83,9 @@ router.put('/', _passport2.default.authenticate('jwt', { session: false }), func
     role: req.body.role,
     company: req.body.company,
     link: req.body.link,
-    location: req.body.location || '',
-    seniority: req.body.seniority || '',
-    salaryRange: req.body.salaryRange || '',
+    location: req.body.location || 'Unspecified',
+    seniority: req.body.seniority || 'Unspecified',
+    salaryRange: req.body.salaryRange || 'Unspecified',
     status: req.body.status || 'Saved'
   };
   /** Check if link is already in user's list. */

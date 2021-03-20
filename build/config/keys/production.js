@@ -21,7 +21,10 @@ var config = exports.config = {
     host: DBHOST,
     dialect: 'postgres',
     dialectOptions: {
-      ssl: true
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
     },
     pool: {
       max: 10,
