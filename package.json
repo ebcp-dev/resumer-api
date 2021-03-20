@@ -8,7 +8,7 @@
     "clean": "rm -rf build && mkdir build",
     "build": "npm run clean && npm run build-babel",
     "test": "export NODE_ENV=test && mocha --require babel-core/register",
-    "test-cover": "export NODE_ENV=test npm run build && nyc --reporter=text mocha --require babel-core/register",
+    "test-cover": "export NODE_ENV=test npm run build && nyc --reporter=text mocha --timeout 5000 --require babel-core/register",
     "build-babel": "babel -d ./build ./src -s",
     "start": "npm run build && nodemon ./build/server.js",
     "postinstall": "npm run build",
