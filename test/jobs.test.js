@@ -36,7 +36,7 @@ describe('Job routes:', (done) => {
         .set('Authorization', token)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(0);
+          expect(res.body.length).to.equal(0);
           done();
         });
     });
@@ -46,7 +46,7 @@ describe('Job routes:', (done) => {
         .set('Authorization', token2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(0);
+          expect(res.body.length).to.equal(0);
           done();
         });
     });
@@ -63,7 +63,7 @@ describe('Job routes:', (done) => {
         .expect(200)
         .end((err, res) => {
           job1Id = res.body.id;
-          expect(res.body.link).equals(jobInput.testAddJob1.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob1.link);
           done();
         });
     });
@@ -74,7 +74,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.link).equals(jobInput.testAddJob2.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob2.link);
           done();
         });
     });
@@ -85,7 +85,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob3)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.link).equals(jobInput.testAddJob3.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob3.link);
           done();
         });
     });
@@ -96,7 +96,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob1)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.link).equals('Job already added.');
+          expect(res.body.link).to.equal('Job already added.');
           done();
         });
     });
@@ -106,9 +106,9 @@ describe('Job routes:', (done) => {
         .set('Authorization', token)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.role).equals('Role is required.');
-          expect(res.body.company).equals('Company is required.');
-          expect(res.body.link).equals('Link is required.');
+          expect(res.body.role).to.equal('Role is required.');
+          expect(res.body.company).to.equal('Company is required.');
+          expect(res.body.link).to.equal('Link is required.');
           done();
         });
     });
@@ -119,7 +119,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.invalidJobLink)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.link).equals('Link is invalid.');
+          expect(res.body.link).to.equal('Link is invalid.');
           done();
         });
     });
@@ -152,8 +152,8 @@ describe('Job routes:', (done) => {
             .send(testUpdateJob1)
             .expect(200)
             .end((err, res) => {
-              expect(res.body.id).equals(testUpdateJob1.id);
-              expect(res.body.link).equals(testUpdateJob1.link);
+              expect(res.body.id).to.equal(testUpdateJob1.id);
+              expect(res.body.link).to.equal(testUpdateJob1.link);
               done();
             });
         });
@@ -165,7 +165,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob1)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.link).equals('Job already added.');
+          expect(res.body.link).to.equal('Job already added.');
           done();
         });
     });
@@ -175,9 +175,9 @@ describe('Job routes:', (done) => {
         .set('Authorization', token)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.role).equals('Role is required.');
-          expect(res.body.company).equals('Company is required.');
-          expect(res.body.link).equals('Link is required.');
+          expect(res.body.role).to.equal('Role is required.');
+          expect(res.body.company).to.equal('Company is required.');
+          expect(res.body.link).to.equal('Link is required.');
           done();
         });
     });
@@ -194,7 +194,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob1)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.link).equals(jobInput.testAddJob1.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob1.link);
           done();
         });
     });
@@ -205,7 +205,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.link).equals(jobInput.testAddJob2.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob2.link);
           done();
         });
     });
@@ -216,7 +216,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob3)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.link).equals(jobInput.testAddJob3.link);
+          expect(res.body.link).to.equal(jobInput.testAddJob3.link);
           done();
         });
     });
@@ -227,7 +227,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.testAddJob1)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.link).equals('Job already added.');
+          expect(res.body.link).to.equal('Job already added.');
           done();
         });
     });
@@ -237,9 +237,9 @@ describe('Job routes:', (done) => {
         .set('Authorization', token2)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.role).equals('Role is required.');
-          expect(res.body.company).equals('Company is required.');
-          expect(res.body.link).equals('Link is required.');
+          expect(res.body.role).to.equal('Role is required.');
+          expect(res.body.company).to.equal('Company is required.');
+          expect(res.body.link).to.equal('Link is required.');
           done();
         });
     });
@@ -250,7 +250,7 @@ describe('Job routes:', (done) => {
         .send(jobInput.invalidJobLink)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.link).equals('Link is invalid.');
+          expect(res.body.link).to.equal('Link is invalid.');
           done();
         });
     });
@@ -313,7 +313,7 @@ describe('Job routes:', (done) => {
         .set('Authorization', token)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(2);
+          expect(res.body.length).to.equal(2);
           done();
         });
     });
@@ -323,7 +323,7 @@ describe('Job routes:', (done) => {
         .set('Authorization', token2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(1);
+          expect(res.body.length).to.equal(1);
           done();
         });
     });

@@ -35,7 +35,7 @@ describe('Profile routes:', (done) => {
         .get('/api/profile/all')
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(0);
+          expect(res.body.length).to.equal(0);
           done();
         });
     });
@@ -47,8 +47,8 @@ describe('Profile routes:', (done) => {
         .set('Authorization', token)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.username).equals('Username is required.');
-          expect(res.body.status).equals('Status is required.');
+          expect(res.body.username).to.equal('Username is required.');
+          expect(res.body.status).to.equal('Status is required.');
           done();
         });
     });
@@ -59,7 +59,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileWebsite)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.website).equals('Website URL is invalid.');
+          expect(res.body.website).to.equal('Website URL is invalid.');
           done();
         });
     });
@@ -70,7 +70,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileLinkedIn)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.linkedin).equals('LinkedIn URL is invalid.');
+          expect(res.body.linkedin).to.equal('LinkedIn URL is invalid.');
           done();
         });
     });
@@ -81,7 +81,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileGitHub)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.github).equals('GitHub URL is invalid.');
+          expect(res.body.github).to.equal('GitHub URL is invalid.');
           done();
         });
     });
@@ -92,7 +92,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileStackOverFlow)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.stackoverflow).equals(
+          expect(res.body.stackoverflow).to.equal(
             'Stack Overflow URL is invalid.'
           );
           done();
@@ -105,7 +105,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileDribbble)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.dribbble).equals('Dribbble URL is invalid.');
+          expect(res.body.dribbble).to.equal('Dribbble URL is invalid.');
           done();
         });
     });
@@ -116,7 +116,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.invalidProfileTwitter)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.twitter).equals('Twitter URL is invalid.');
+          expect(res.body.twitter).to.equal('Twitter URL is invalid.');
           done();
         });
     });
@@ -127,7 +127,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.testCreateProfile1)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.username).equals(
+          expect(res.body.username).to.equal(
             profileInput.testCreateProfile1.username
           );
           done();
@@ -140,7 +140,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.testCreateProfile1)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.profile).equals('You already have a profile.');
+          expect(res.body.profile).to.equal('You already have a profile.');
           done();
         });
     });
@@ -151,7 +151,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.testCreateProfile1)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.username).equals('Username already exists.');
+          expect(res.body.username).to.equal('Username already exists.');
           done();
         });
     });
@@ -162,7 +162,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.testCreateProfile2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.username).equals(
+          expect(res.body.username).to.equal(
             profileInput.testCreateProfile2.username
           );
           done();
@@ -182,7 +182,7 @@ describe('Profile routes:', (done) => {
         .set('Authorization', token)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.username).equals(
+          expect(res.body.username).to.equal(
             profileInput.testCreateProfile1.username
           );
           done();
@@ -199,7 +199,7 @@ describe('Profile routes:', (done) => {
         .set('Authorization', token)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.profile.username).equals(
+          expect(res.body.profile.username).to.equal(
             profileInput.testCreateProfile1.username
           );
           done();
@@ -211,7 +211,7 @@ describe('Profile routes:', (done) => {
         .set('Authorization', token)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.error).equals('No profiles found for this user.');
+          expect(res.body.error).to.equal('No profiles found for this user.');
           done();
         });
     });
@@ -227,7 +227,7 @@ describe('Profile routes:', (done) => {
         .send(profileInput.testUpdateProfile1)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.username).equals(
+          expect(res.body.username).to.equal(
             profileInput.testUpdateProfile1.username
           );
           done();
@@ -238,8 +238,8 @@ describe('Profile routes:', (done) => {
         .put('/api/profile')
         .set('Authorization', token2)
         .end((err, res) => {
-          expect(res.body.username).equals('Username is required.');
-          expect(res.body.status).equals('Status is required.');
+          expect(res.body.username).to.equal('Username is required.');
+          expect(res.body.status).to.equal('Status is required.');
           done();
         });
     });
@@ -249,7 +249,7 @@ describe('Profile routes:', (done) => {
         .set('Authorization', token2)
         .send(profileInput.testUpdateProfile1)
         .end((err, res) => {
-          expect(res.body.username).equals('Username already exists.');
+          expect(res.body.username).to.equal('Username already exists.');
           done();
         });
     });
@@ -263,7 +263,7 @@ describe('Profile routes:', (done) => {
         .get('/api/profile/all')
         .expect(200)
         .end((err, res) => {
-          expect(res.body.length).equals(2);
+          expect(res.body.length).to.equal(2);
           done();
         });
     });

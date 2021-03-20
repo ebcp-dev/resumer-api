@@ -13,7 +13,7 @@ describe('User routes:', (done) => {
         .send(userInput.testSignup2)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.email).equals(userInput.testSignup2.email);
+          expect(res.body.email).to.equal(userInput.testSignup2.email);
           done();
         });
     });
@@ -23,7 +23,7 @@ describe('User routes:', (done) => {
         .send(userInput.testSignup1)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals('Email already in use.');
+          expect(res.body.email).to.equal('Email already in use.');
           done();
         });
     });
@@ -33,9 +33,9 @@ describe('User routes:', (done) => {
         .send(userInput.emptySignupInput)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals('Email is required.');
-          expect(res.body.password).equals('Password is required.');
-          expect(res.body.password2).equals('Confirm password is required.');
+          expect(res.body.email).to.equal('Email is required.');
+          expect(res.body.password).to.equal('Password is required.');
+          expect(res.body.password2).to.equal('Confirm password is required.');
           done();
         });
     });
@@ -45,7 +45,7 @@ describe('User routes:', (done) => {
         .send(userInput.unconfirmedSignupPassword)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.password2).equals('Passwords must match.');
+          expect(res.body.password2).to.equal('Passwords must match.');
           done();
         });
     });
@@ -55,7 +55,7 @@ describe('User routes:', (done) => {
         .send(userInput.invalidSignupEmail)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals('Email is invalid.');
+          expect(res.body.email).to.equal('Email is invalid.');
           done();
         });
     });
@@ -77,7 +77,7 @@ describe('User routes:', (done) => {
         .send(userInput.wrongLoginEmail)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals('User not found.');
+          expect(res.body.email).to.equal('User not found.');
           done();
         });
     });
@@ -87,7 +87,7 @@ describe('User routes:', (done) => {
         .send(userInput.wrongLoginPassword)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.password).equals('Incorrect password.');
+          expect(res.body.password).to.equal('Incorrect password.');
           done();
         });
     });
@@ -97,8 +97,8 @@ describe('User routes:', (done) => {
         .send(userInput.emptyLoginInput)
         .expect(400)
         .end((err, res) => {
-          expect(res.body.email).equals('Email is required.');
-          expect(res.body.password).equals('Password is required.');
+          expect(res.body.email).to.equal('Email is required.');
+          expect(res.body.password).to.equal('Password is required.');
           done();
         });
     });
@@ -120,7 +120,7 @@ describe('User routes:', (done) => {
         .set('Authorization', token)
         .expect(200)
         .end((err, res) => {
-          expect(res.body.email).equals(userInput.testLogin1.email);
+          expect(res.body.email).to.equal(userInput.testLogin1.email);
           done();
         });
     });
