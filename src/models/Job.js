@@ -25,16 +25,13 @@ export const JobModel = (sequelize, type) => {
       allowNull: false
     },
     location: {
-      type: type.STRING,
-      defaultValue: 'Unspecified'
+      type: type.STRING
     },
     seniority: {
-      type: type.STRING,
-      defaultValue: 'Unspecified'
+      type: type.STRING
     },
     salaryRange: {
-      type: type.STRING,
-      defaultValue: 'Unspecified'
+      type: type.STRING
     },
     status: {
       type: type.STRING,
